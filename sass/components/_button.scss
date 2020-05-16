@@ -1,0 +1,83 @@
+
+.btn {
+    &:link,
+    &:visited{ /* Note we use pseudo classes to style elements under a special condition */
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative; /* Needed for the pseudo element specified. */
+        font-size: $default-font-size;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black,.2); /* the values are, offset in the x axis  offest in the y axis  blur  colour */
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active { /* When we click an element then it is called the active state */
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+    &--white{
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &::after { /* it creates a duplicate of the main element. CONTENT PROPERTY IS MANDATORY even if it is empty */
+        content: "";
+        display: inline-block; /*Becuase the btn is also an inline block. We want it to be exactly the same */
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute; /* We need it behing the main element */
+        top: 0;
+        left: 0;
+        z-index: -1; /* Defines the position of elements if they are one on top of eachother */
+        transition: all .4s; /*REMEMBER we put the transition property on the initial state.
+
+    /*The after is a pseudo element that is basically treated as a child of the main element (btn). */    
+    }
+
+    &--animated {
+        animation: moveInBottom .5s ease-out .7s; /* Last parameter is the animation delay */
+        animation-fill-mode: backwards; /* The applies the animation before it start */ 
+
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 0.1rem solid $color-primary;
+        padding: 0.3rem;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-0.2rem);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
