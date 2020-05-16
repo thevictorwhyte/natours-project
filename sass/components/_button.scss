@@ -35,6 +35,15 @@
         }
     }
 
+    &--green{
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
     &::after { /* it creates a duplicate of the main element. CONTENT PROPERTY IS MANDATORY even if it is empty */
         content: "";
         display: inline-block; /*Becuase the btn is also an inline block. We want it to be exactly the same */
