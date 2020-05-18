@@ -1,5 +1,6 @@
 
 .btn {
+    &, //Necessary for the <button> element because it doesn't have the link and visited pseudo classes
     &:link,
     &:visited{ /* Note we use pseudo classes to style elements under a special condition */
         text-transform: uppercase;
@@ -10,6 +11,10 @@
         transition: all .2s;
         position: relative; /* Needed for the pseudo element specified. */
         font-size: $default-font-size;
+
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -22,9 +27,11 @@
         }
     }
 
-    &:active { /* When we click an element then it is called the active state */
+    &:active,
+    &:focus { /* When we click an element then it is called the active state */
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+        outline: none;
     }
     &--white{
         background-color: $color-white;
