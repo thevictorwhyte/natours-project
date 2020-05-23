@@ -10,6 +10,13 @@
     visibility: hidden;
     transition: all .3s;
 
+    @include respond(tab-land) {
+        height:100vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
 
     &__content {
         @include absCenter;
@@ -22,12 +29,31 @@
         opacity: 0;
         transform: translate(-50%, -50%) scale(.25);
         transition: all .5s .2s;
+
+        @include respond(tab-land) {
+            width: 80%;
+            //height: auto;
+            display: block;
+        }
+
+        @include respond(tab-port) {
+            width: 80%;
+            height: fit-content;
+            display: block;
+        }
        
     }
 
     &__left {
         width: 33.33333%;
         display: table-cell;
+
+        @include respond(tab-land) {
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin-top: 5rem;
+        }
     }
 
     &__right {
@@ -35,29 +61,49 @@
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
+        
+        @include respond(tab-land) {
+            width: 100%;
+            //height: 66.66667%;
+            text-align: center;
+            display: block;
+        }
     }
 
     &__img {
         display: block;
         width: 100%;
+
+        @include respond(tab-land) {
+            display: inline-block;
+            width: 49%;
+        }
     }
    
     &__text {
         font-size: 1.4rem;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
 
-        -moz-column-count: 2;
-        -moz-column-gap: 4rem; //1em = 14px because em is in relation to the containing element.
-        -moz-column-rule: 1px solid $color-grey-light-2;
+        @include respond(min-tab-port) {
 
-        column-count: 2;
-        column-gap: 4rem;
-        column-rule: 1px solid $color-grey-light-2;
+            margin-bottom: 4rem;
 
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        -webkit-hyphens: auto;
-        hyphens: auto;
+            -moz-column-count: 2;
+            -moz-column-gap: 4rem; //1em = 14px because em is in relation to the containing element.
+            -moz-column-rule: 1px solid $color-grey-light-2;
+    
+            column-count: 2;
+            column-gap: 4rem;
+            column-rule: 1px solid $color-grey-light-2;
+    
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+
+        
+
     }
 
     //Open states
@@ -83,6 +129,10 @@
             display: inline-block;
             transition: all .2s;
             line-height: 1;
+
+            @include respond(tab-land) {
+                top: 1.35rem;
+            }
         }
 
         &:hover {
